@@ -7,10 +7,10 @@ void lifter(){
   bool down = joystickGetDigital(1, 7, JOY_DOWN);
 
   if(up && !down){
-    motorSet(4, 90);
+    motorSet(4, 127);
   }
   else if(!up && down){
-    motorSet(4,-90);
+    motorSet(4,-127);
   }
   else{
     motorSet(4,0);
