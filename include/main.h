@@ -25,6 +25,9 @@
 // This prevents multiple inclusion, which isn't bad for this file but is good practice
 #define MAIN_H_
 
+// Port definitions
+#define LIMIT_SWITCH 1
+
 #include <API.h>
 
 // Allow usage of this file in C++ programs
