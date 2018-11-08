@@ -2,13 +2,17 @@
 #include "claw.h"
 
 void claw(){
-  bool open = joystickGetDigital(1, 5, JOY_UP);
-  bool close = joystickGetDigital(1, 5, JOY_DOWN);
+  bool up = joystickGetDigital(1, 5, JOY_UP);
+  bool down = joystickGetDigital(1, 5, JOY_DOWN);
 
-  if(open){
-    return;
+  //int clawPotValue = analogRead(2);
+  if(up && !down){
+    motorSet(10, -90);
   }
-  else if(close){
-    return;
+  else if(!up && down){
+    motorSet(10, 90);
+  }
+  else{
+    motorSet(10,0);
   }
 }
