@@ -21,7 +21,11 @@
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
 void initializeIO() {
+<<<<<<< HEAD
   pinMode(LIMIT_SWITCH, INPUT);
+=======
+  
+>>>>>>> d83e0227bac4ccdf5359acdabc7649949c706c4d
   // arm pot
   pinMode(1, INPUT_ANALOG);
   // claw
