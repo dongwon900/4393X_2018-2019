@@ -1,24 +1,42 @@
 #include "main.h"
 #include "claw_system.h"
 
-// incomplete, no spinning claw
-void claw(){
-  bool open = joystickGetDigital(1, 5, JOY_UP);
-  bool close = joystickGetDigital(1, 5, JOY_DOWN);
-
-  if(open){
-    return;
-  }
-  else if(close){
-    return;
-  }
+// up and down
+void claw(bool up, bool down, int speed){
+  if(up) motorSet(8,-speed);
+  else if(down) motorSet(8, speed);
+  else motorSet(8,0);
 }
 
-void arm(int speed){
-  bool up = joystickGetDigital(1, 8, JOY_UP);
-  bool down = joystickGetDigital(1, 8, JOY_DOWN);
+int arm_level = 0;
+double arm_pot_values[3] = {}; // insert pot val 1, 2, 3
 
+void arm(bool up, bool down, int speed){
   if (up) motorSet(7, -speed);
   else if (down) motorSet(7, speed);
   else motorSet(7, 0);
+  // // implement level adjustment
+  // if(up){
+  //   // as long as arm level is not max value
+  //   if(arm_level != 2) arm_level += 1;
+  //   // move until desired value +- 2 is reached
+  //   while()
+  // }
+}
+
+void auto_cap(int height){
+  // bring robot into certain distance
+
+  // lift arm to certain length
+  // move forward
+  // bring arm down slightly
+  // move backward
+
+}
+
+// handles the input
+void claw_system(int clawspeed, int armspeed){
+  claw(joystickGetDigital(1, 5, JOY_UP), joystickGetDigital(1, 5, JOY_DOWN), clawspeed);
+  arm(joystickGetDigital(1, 8, JOY_UP), joystickGetDigital(1, 8, JOY_DOWN), armspeed);
+
 }

@@ -8,16 +8,22 @@
 // the operatorControl loop
 void operatorControl() {
 	while (1) {
-		// checks if the middle button is pressed
-		inDiagnostics();
+		drivetrain();
+		launcher(127);
+		balllift(127);
+		claw_system(127,127);
 
-		// if not in diagnostics mode
-		if(inDiagnostics_state == false){
-			drivetrain();
-		}
-		// if in diagnostics mode, run test function
-		else{
-			test();
-		}
+		test();
+		// // checks if the middle button is pressed
+		// inDiagnostics();
+		//
+		// // if not in diagnostics mode
+		// if(inDiagnostics_state == false){
+		// 	drivetrain();
+		// }
+		// // if in diagnostics mode, run test function
+		// else{
+		// 	test();
+		// }
 	}
 }

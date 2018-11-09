@@ -33,10 +33,6 @@ void initializeIO() {
 
   // launcher limit switch
   pinMode(1, INPUT);
-  // ultrasonic out
-  pinMode(2, INPUT);
-  // ultra in
-  pinMode(3, INPUT);
 
 }
 
@@ -54,6 +50,10 @@ void initializeIO() {
  * can be implemented in this task if desired.
  */
 void initialize() {
+  // initialize lcds
   lcdInit(uart1);
+  // ultrasonic in, out
+  ultrasonicInit(3, 2);
+  // initialize encoders
   imeInitializeAll();
 }

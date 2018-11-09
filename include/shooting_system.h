@@ -1,3 +1,4 @@
 #include "main.h"
 
-void balllift();
+void balllift(int speed);
+void launcher(int speed);
