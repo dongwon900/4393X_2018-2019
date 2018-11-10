@@ -9,7 +9,7 @@ void claw(bool up, bool down, int speed){
 }
 
 int arm_level = 0;
-double arm_pot_values[3] = {}; // insert pot val 1, 2, 3
+double arm_pot_values[3] = {2000, 2500, 3000}; // insert pot val 1, 2, 3
 
 void arm(bool up, bool down, int speed) {
   //if (up) motorSet(7, -speed);
