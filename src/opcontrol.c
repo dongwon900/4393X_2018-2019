@@ -5,15 +5,23 @@
 #include "plant_system.h"
 #include "test.h"
 
-// the operatorControl loop
+// the operatorControl
 void operatorControl() {
 	while (1) {
-		drivetrain();
-		launcher(127);
-		balllift(127);
-		claw_system(127,127);
+		// checks for disarm input
+		checkdisarm();
 
-		test();
+		// if not in disarmed mode
+		if(disarmed == false){
+			drivetrain();
+			shooting_system(127,127);
+			claw_system(127,127);
+		}
+
+		// if in disarmed mode
+
+
+		//test();
 		// // checks if the middle button is pressed
 		// inDiagnostics();
 		//

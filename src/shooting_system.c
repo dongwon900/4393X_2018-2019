@@ -41,3 +41,38 @@ void launcher(int speed){
     }
   }
 }
+
+static bool disarmed = false;
+
+void disarm(){
+  // if the launcher is cocked
+	if(isCocked == true){
+		motorSet(6, -127);
+		delay(1000);
+		motorSet(6, 0);
+	}
+  // it is now disarmed
+  disarmed = true;
+}
+
+// checks for disarm button input
+void checkdisarm(){
+  // if button pressed
+  if(joystickGetDigital(1, 7, JOY_RIGHT) == true){
+    // and if robot not disarmed
+    if(disarmed == false){
+      // change robot state to armed
+      disarm();
+    }
+    // if robot disarmed
+    else{
+      // change robot state to armed
+      disarmed = false;
+    }
+  }
+}
+
+void shooting_system(int ballspeed, int launcherspeed){
+  balllift(ballspeed);
+  launcher(launcherspeed);
+}
