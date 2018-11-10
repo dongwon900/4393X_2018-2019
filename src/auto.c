@@ -31,16 +31,80 @@
  // go forward for 2.5 seconds and tae a shot
  //
 void autonomous() {
-  // go forward
-  motorSet(2, 127);
-  motorSet(3, -127);
 
-  // start shooting after X seconds
-  // delay(X)+
-  motorSet(6, 127);
-  delay(250);
-  motorSet(6, 0);
+  // Bit 1 (pin 12): (ON (left) <-> OFF (Right)
+  // Bit 2 (pin 11): (ON (Front) <-> OFF (Back))
+  // Bit 3 (pin 10): (ON (Auto on) <-> OFF (auto off))
 
-  delay(2250);
-  motorStopAll();
+  int x = 0;
+
+  if (digitalRead(AUTO_BIT_ONE) == LOW) {
+    x = x | 1; //0001
+  }
+
+  if (digitalRead(AUTO_BIT_TWO) == LOW) {
+    x = x | 2; //0010
+  }
+
+  if (digitalRead(AUTO_BIT_THREE) == LOW) {
+    x = x | 4; //0100
+  }
+
+  if (x >= 4) {
+    // Left and Back
+    if (x == 5) {
+      // shoot to flip middle height flag
+      motorSet(6, 127);
+      delay(250);
+      motorSet(6, 0);
+    }
+
+    // Right and Front
+    if (x == 6) {
+      // shoot to flip middle height flag
+      motorSet(6, 127);
+      delay(250);
+      motorSet(6, 0);
+
+      // move to flip bottom flag
+      motorSet(2, 127);
+      motorSet(3, -127);
+      delay(2250);
+      motorStopAll();
+
+      // go back to starting position
+      motorSet(2, -127);
+      motorSet(3, 127);
+      delay(2250);
+      motorStopAll();
+    }
+
+    // Left and Front
+    if (x == 7) {
+      // shoot to flip middle height flag
+      motorSet(6, 127);
+      delay(250);
+      motorSet(6, 0);
+
+      // move to flip bottom flag
+      motorSet(2, 127);
+      motorSet(3, -127);
+      delay(2250);
+      motorStopAll();
+
+      // go back to starting position
+      motorSet(2, -127);
+      motorSet(3, 127);
+      delay(2250);
+      motorStopAll();
+    }
+
+    // Right and Back
+    if (x == 4) {
+      // shoot to flip middle height flag
+      motorSet(6, 127);
+      delay(250);
+      motorSet(6, 0);
+    }
+  }
 }
