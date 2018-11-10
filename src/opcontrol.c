@@ -13,15 +13,18 @@ void operatorControl() {
 
 		// if not in disarmed mode
 		if(disarmed == false){
-			drivetrain();
-			shooting_system(127,127);
-			claw_system(127,127);
-
 			if (joystickGetDigital(1, 7, JOY_LEFT)) {
 				if(joystickGetDigital(1, 8, JOY_RIGHT)) {
 					autonomous();
 				}
 			}
+			
+			drivetrain();
+			shooting_system(127,127);
+			claw_system(127,127);
+			lifter();
+
+
 		}
 
 		// if in disarmed mode
