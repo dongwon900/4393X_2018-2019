@@ -89,4 +89,6 @@ void initialize() {
   ultrasonicInit(3, 2);
   // initialize encoders
   imeInitializeAll();
+  imeReset(0);
+  imeReset(1);
 }
