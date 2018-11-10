@@ -6,6 +6,7 @@
   int *ime_1;
 
 void test(){
+<<<<<<< HEAD
   // arm readings
   printf("Arm: %d \n", analogRead(1));
   // claw readings
@@ -24,6 +25,24 @@ void test(){
   printf("distance: %d\n", ultrasonicGet(sonar));
 
   delay(250);
+=======
+  // // arm readings
+  // printf("Arm: %d \n", analogRead(1));
+  // // claw readings
+  // printf("Claw: %d \n", analogRead(2));
+  //
+  // // left and right line tracker readings
+  // printf("Left Line Tracker: %d \n", analogRead(3));
+  // printf("Right Line Tracker: %d \n", analogRead(4));
+  //
+  // // left and right encoder readings
+  // imeGet(0,ime_0);
+  // imeGet(0,ime_1);
+  // printf("left encoder count: %d, right encoder count: %d \n", *ime_0, *ime_1);
+  //
+  // delay(750);
+  // system("clear");
+>>>>>>> cfaad2c915fc030f3d2c14966bce29a4fd768eea
 };
 
 

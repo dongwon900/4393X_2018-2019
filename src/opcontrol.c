@@ -5,7 +5,8 @@
 #include "plant_system.h"
 #include "test.h"
 
-// the operatorControl loop
+// the operatorControl
+
 void operatorControl() {
 	while (1) {
 		if(is_diagnostics == false){
@@ -17,6 +18,10 @@ void operatorControl() {
 			test();
 		}
 
+<<<<<<< HEAD
+=======
+		//test();
+>>>>>>> cfaad2c915fc030f3d2c14966bce29a4fd768eea
 		// // checks if the middle button is pressed
 		// inDiagnostics();
 		//
