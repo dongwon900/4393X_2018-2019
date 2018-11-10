@@ -18,10 +18,7 @@ void operatorControl() {
 			test();
 		}
 
-<<<<<<< HEAD
-=======
 		//test();
->>>>>>> cfaad2c915fc030f3d2c14966bce29a4fd768eea
 		// // checks if the middle button is pressed
 		// inDiagnostics();
 		//
