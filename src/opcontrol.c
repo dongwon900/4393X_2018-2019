@@ -5,7 +5,8 @@
 #include "plant_system.h"
 #include "test.h"
 
-// the operatorControl loop
+// the operatorControl
+
 void operatorControl() {
 	while (1) {
 		drivetrain();
@@ -13,7 +14,7 @@ void operatorControl() {
 		balllift(127);
 		claw_system(127,127);
 
-		test();
+		//test();
 		// // checks if the middle button is pressed
 		// inDiagnostics();
 		//

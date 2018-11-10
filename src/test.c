@@ -6,23 +6,22 @@
   int *ime_1;
 
 void test(){
-  // arm readings
-  printf("Arm: %d \n", analogRead(1));
-  // claw readings
-  printf("Claw: %d \n", analogRead(2));
-
-  // left and right line tracker readings
-  printf("Left Line Tracker: %d \n", analogRead(3));
-  printf("Right Line Tracker: %d \n", analogRead(4));
-
-
-  // left and right encoder readings
-  imeGet(0,ime_0);
-  imeGet(0,ime_1);
-  printf("left encoder count: %d, right encoder count: %d \n", *ime_0, *ime_1);
-
-  delay(750);
-  system("clear");
+  // // arm readings
+  // printf("Arm: %d \n", analogRead(1));
+  // // claw readings
+  // printf("Claw: %d \n", analogRead(2));
+  //
+  // // left and right line tracker readings
+  // printf("Left Line Tracker: %d \n", analogRead(3));
+  // printf("Right Line Tracker: %d \n", analogRead(4));
+  //
+  // // left and right encoder readings
+  // imeGet(0,ime_0);
+  // imeGet(0,ime_1);
+  // printf("left encoder count: %d, right encoder count: %d \n", *ime_0, *ime_1);
+  //
+  // delay(750);
+  // system("clear");
 };
 
 // int menu_state = 0;

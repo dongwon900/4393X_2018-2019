@@ -19,7 +19,7 @@ void arm(bool up, bool down, int speed) {
   if (up) {
     if (arm_level < 2) {
       arm_level++;
-      while (analogRead(2) < arm_pot_values[2] - tolerance) {
+      while (analogRead(2) < arm_pot_values[arm_level] - tolerance) {
         motorSet(7, -speed);
       }
       motorSet(7, 0);
@@ -27,9 +27,9 @@ void arm(bool up, bool down, int speed) {
   }
 
   if (down) {
-    if (arm_level > 1) {
+    if (arm_level > 0) {
       arm_level--;
-      while (analogRead(2) > arm_pot_values[0] + tolerance) {
+      while (analogRead(2) > arm_pot_values[arm_level] + tolerance) {
         motorSet(7, speed);
       }
       motorSet(7, 0);
