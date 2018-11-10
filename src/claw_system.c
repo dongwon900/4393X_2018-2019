@@ -11,11 +11,32 @@ void claw(bool up, bool down, int speed){
 int arm_level = 0;
 double arm_pot_values[3] = {}; // insert pot val 1, 2, 3
 
-void arm(bool up, bool down, int speed){
-  if (up) motorSet(7, -speed);
-  else if (down) motorSet(7, speed);
-  else motorSet(7, 0);
-  // // implement level adjustment
+void arm(bool up, bool down, int speed) {
+  //if (up) motorSet(7, -speed);
+  //else if (down) motorSet(7, speed);
+  //else motorSet(7, 0);
+
+  if (up) {
+    if (arm_level < 2) {
+      arm_level++;
+      while (analogRead(2) < arm_pot_values[2] - tolerance) {
+        motorSet(7, -speed);
+      }
+      motorSet(7, 0);
+    }
+  }
+
+  if (down) {
+    if (arm_level > 1) {
+      arm_level--;
+      while (analogRead(2) > arm_pot_values[0] + tolerance) {
+        motorSet(7, speed);
+      }
+      motorSet(7, 0);
+    }
+  }
+
+  // implement level adjustment
   // if(up){
   //   // as long as arm level is not max value
   //   if(arm_level != 2) arm_level += 1;
@@ -26,7 +47,6 @@ void arm(bool up, bool down, int speed){
 
 void auto_cap(int height){
   // bring robot into certain distance
-
   // lift arm to certain length
   // move forward
   // bring arm down slightly
