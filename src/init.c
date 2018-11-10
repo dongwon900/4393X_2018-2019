@@ -83,6 +83,7 @@ void initialize() {
   a[3] = "Front Left";
 
   lcdPrint(uart1, 1, a[initializeAutoMode()]);
+  print(a[initializeAutoMode()]);
 
   // ultrasonic in, out
   sonar = ultrasonicInit(3, 2);
