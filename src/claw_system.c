@@ -3,9 +3,9 @@
 
 // up and down
 void claw(bool up, bool down, int speed){
-  if(up) motorSet(8, -speed);
-  else if(down) motorSet(8, speed);
-  else motorSet(8,0);
+  if(up) motorSet(10, -speed);
+  else if(down) motorSet(10, speed);
+  else motorSet(10,0);
 }
 
 void arm(bool up, bool down, int speed) {

@@ -2,7 +2,7 @@
 
 void balllift(int speed){
   // handle the drivetrain
-  bool lift = joystickGetDigital(1, 6, JOY_UP);
+  bool lift = joystickGetDigital(1, 8, JOY_UP);
 
   // if button pressed set motor
   if(lift){
@@ -59,9 +59,9 @@ void disarm(){
 void checkdisarm(){
   // if button pressed
   if(joystickGetDigital(1, 7, JOY_RIGHT) == true){
-    // and if robot not disarmed
+    // and if robot armed
     if(disarmed == false){
-      // change robot state to armed
+      // change robot state to disarmed
       disarm();
     }
     // if robot disarmed
