@@ -8,6 +8,6 @@ void drivetrain(){
 
   motorSet(2, left);
   motorSet(8, left);
-  motorSet(9, -right)
+  motorSet(9, -right);
   motorSet(3, -right);
 }
