@@ -6,7 +6,6 @@
   int *ime_1;
 
 void test(){
-<<<<<<< HEAD
   // arm readings
   printf("Arm: %d \n", analogRead(1));
   // claw readings
@@ -25,7 +24,6 @@ void test(){
   printf("distance: %d\n", ultrasonicGet(sonar));
 
   delay(250);
-=======
   // // arm readings
   // printf("Arm: %d \n", analogRead(1));
   // // claw readings
@@ -42,7 +40,6 @@ void test(){
   //
   // delay(750);
   // system("clear");
->>>>>>> cfaad2c915fc030f3d2c14966bce29a4fd768eea
 };
 
 

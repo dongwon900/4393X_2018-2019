@@ -16,7 +16,7 @@ void balllift(int speed){
 
 }
 
-static bool isCocked = false; //MAKE THIS INITIALIZE TO THE STATE OF THE LIMIT SWITCH INSTEAD OF ALWAYS AT FALSE
+static bool isCocked = false;
 
 void launcher(int speed){
   bool launch = joystickGetDigital(1, 8, JOY_RIGHT);
