@@ -27,5 +27,20 @@
  * The autonomous task may exit, unlike operatorControl() which should never exit. If it does
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
+
+ // go forward for 2.5 seconds and tae a shot
+ //
 void autonomous() {
+  // go forward
+  motorSet(2, 127);
+  motorSet(3, -127);
+
+  // start shooting after X seconds
+  // delay(X)+
+  motorSet(6, 127);
+  delay(250);
+  motorSet(6, 0);
+
+  delay(2250);
+  motorStopAll();
 }

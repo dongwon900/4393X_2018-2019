@@ -18,7 +18,6 @@ void arm(bool up, bool down, int speed) {
 void claw_system(int clawspeed, int armspeed){
   claw(joystickGetDigital(1, 5, JOY_UP), joystickGetDigital(1, 5, JOY_DOWN), clawspeed);
   arm(joystickGetDigital(1, 6, JOY_UP), joystickGetDigital(1, 6, JOY_DOWN), armspeed);
-
 }
 
 
