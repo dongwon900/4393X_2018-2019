@@ -34,9 +34,9 @@ void test(){
   print((const char*) *ime_1);
   print("\n");
 
-  //print("distance from wall: ");
-  //print((const char*) ultrasonicGet(sonar));
-  //print("\n");
+  print("distance from wall: ");
+  print((const char*) ultrasonicGet(sonar));
+  print("\n");
 
   delay(250);
 };

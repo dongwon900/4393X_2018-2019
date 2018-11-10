@@ -86,7 +86,7 @@ void initialize() {
   lcdPrint(a[initializeAutoMode()]);
 */
   // ultrasonic in, out
-  ultrasonicInit(3, 2);
+  sonar = ultrasonicInit(3, 2);
   // initialize encoders
   imeInitializeAll();
   imeReset(0);
