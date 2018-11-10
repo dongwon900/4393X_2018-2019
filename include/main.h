@@ -28,6 +28,10 @@
 // Port definitions
 #define LIMIT_SWITCH 1
 
+#define AUTO_BIT_ONE 12
+#define AUTO_BIT_TWO 11
+#define AUTO_BIT_THREE 10
+
 #include <API.h>
 
 // Allow usage of this file in C++ programs
