@@ -53,48 +53,58 @@ void autonomous() {
   if (x >= 4) {
     // Left and Back
     if (x == 5) {
-
+      // shoot to flip middle height flag
+      motorSet(6, 127);
+      delay(250);
+      motorSet(6, 0);
     }
 
     // Right and Front
     if (x == 6) {
-      // start shooting immediately
+      // shoot to flip middle height flag
       motorSet(6, 127);
-
-      // go forward
-      motorSet(2, 127);
-      motorSet(3, -127);
-
-      // stop the shooting
       delay(250);
       motorSet(6, 0);
 
-       //stop moving
+      // move to flip bottom flag
+      motorSet(2, 127);
+      motorSet(3, -127);
+      delay(2250);
+      motorStopAll();
+
+      // go back to starting position
+      motorSet(2, -127);
+      motorSet(3, 127);
       delay(2250);
       motorStopAll();
     }
 
     // Left and Front
     if (x == 7) {
-      // start shooting immediately
+      // shoot to flip middle height flag
       motorSet(6, 127);
-
-      // go forward
-      motorSet(2, 127);
-      motorSet(3, -127);
-
-      // stop the shooting
       delay(250);
       motorSet(6, 0);
 
-       //stop moving
+      // move to flip bottom flag
+      motorSet(2, 127);
+      motorSet(3, -127);
+      delay(2250);
+      motorStopAll();
+
+      // go back to starting position
+      motorSet(2, -127);
+      motorSet(3, 127);
       delay(2250);
       motorStopAll();
     }
 
     // Right and Back
     if (x == 4) {
-
+      // shoot to flip middle height flag
+      motorSet(6, 127);
+      delay(250);
+      motorSet(6, 0);
     }
   }
 }
