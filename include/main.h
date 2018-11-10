@@ -29,7 +29,11 @@
 #define LIMIT_SWITCH 1
 
 #define AUTO_BIT_ONE 12
+<<<<<<< HEAD
+#define AUTO_BIT_TWO 11
+=======
 #define AUTO_BIT_TWO  11
+>>>>>>> c584e5069c52217a676d1503c9e80e907df9bbe6
 #define AUTO_BIT_THREE 10
 
 #include <API.h>
