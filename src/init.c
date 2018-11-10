@@ -76,15 +76,14 @@ void initialize() {
   lcdInit(uart1);
   lcdClear(uart1);
 
-/*
-  const char *a[2];
+  const char *a[3];
   a[0] = "Back Right";
   a[1] = "Back Left";
   a[2] = "Front Right";
   a[3] = "Front Left";
 
-  lcdPrint(a[initializeAutoMode()]);
-*/
+  lcdPrint(uart1, 1, a[initializeAutoMode()]);
+
   // ultrasonic in, out
   ultrasonicInit(3, 2);
   // initialize encoders
