@@ -33,6 +33,8 @@ void initializeIO() {
 
   // launcher limit switch
   pinMode(1, INPUT);
+  // disarm / diagnostics bumper 
+  pinMode(2, INPUT);
 
 }
 
@@ -53,7 +55,7 @@ void initialize() {
   // initialize lcds
   lcdInit(uart1);
   // ultrasonic in, out
-  ultrasonicInit(3, 2);
+  sonar = ultrasonicInit(3, 2);
   // initialize encoders
   imeInitializeAll();
 }

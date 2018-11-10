@@ -21,11 +21,12 @@ void test(){
   imeGet(0,ime_1);
   printf("left encoder count: %d, right encoder count: %d \n", *ime_0, *ime_1);
 
-  delay(750);
-  system("clear");
+  printf("distance: %d\n", ultrasonicGet(sonar));
+
+  delay(250);
 };
 
-// int menu_state = 0;
+
 
 // void inDiagnostics(){
 //   // 2-state FSM

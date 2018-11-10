@@ -8,12 +8,15 @@
 // the operatorControl loop
 void operatorControl() {
 	while (1) {
-		drivetrain();
-		launcher(127);
-		balllift(127);
-		claw_system(127,127);
+		if(is_diagnostics == false){
+			drivetrain();
+			shooting_system(127,127);
+			claw_system(127,127);
+		}
+		else{
+			test();
+		}
 
-		test();
 		// // checks if the middle button is pressed
 		// inDiagnostics();
 		//
