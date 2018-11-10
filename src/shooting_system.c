@@ -46,13 +46,11 @@ static bool disarmed = false;
 
 void disarm(){
   // if the launcher is cocked
-	if(isCocked == true){
+	if(disarmed == true){
 		motorSet(6, -127);
-		delay(1000);
+		delay(1300);
 		motorSet(6, 0);
 	}
-  // it is now disarmed
-  disarmed = true;
 }
 
 // checks for disarm button input
@@ -62,6 +60,7 @@ void checkdisarm(){
     // and if robot armed
     if(disarmed == false){
       // change robot state to disarmed
+      disarmed = true;
       disarm();
     }
     // if robot disarmed
