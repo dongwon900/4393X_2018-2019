@@ -1,5 +1,5 @@
-#include <main.h>
-#include <test.h>
+#include "main.h"
+#include "test.h"
 #include <stdlib.h>
 
   int *ime_0;
@@ -8,3 +8,6 @@
 void test(){
 
 };
+
+void testAuto() {
+}
