@@ -26,12 +26,15 @@ void operatorControl() {
 				}
 			}
 
+<<<<<<< HEAD
 			if (joystickGetDigital(1, 7, JOY_LEFT)) {
 				if(joystickGetDigital(1, 8, JOY_LEFT)) {
 					adjustDistance(12);
 				}
 			}
 
+=======
+>>>>>>> 74761dcf8525f5bd08e658ad435ca2c1db5a4155
 			drivetrain();
 			shooting_system(127,127);
 			claw_system(127,127);
