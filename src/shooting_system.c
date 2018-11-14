@@ -3,7 +3,7 @@
 
 void balllift(int speed){
   // handle the drivetrain
-  bool lift = joystickGetDigital(1, 6, JOY_UP);
+  bool lift = joystickGetDigital(1, 8, JOY_UP);
 
   // if button pressed set motor
   if(lift){
@@ -30,7 +30,7 @@ void launcher(int speed){
     if (isCocked == false) {
       //lcdSetText(uart1, 1, );
       motorSet(6, speed);
-      delay(250);
+      delay(350);
       isCocked = true;
       motorSet(6, 0);
     }
@@ -40,6 +40,20 @@ void launcher(int speed){
     } else {
       motorSet(6,0);
     }
+  }
+}
+
+void disarm(){
+	motorSet(6, -127);
+	delay(1300);
+	motorSet(6, 0);
+}
+
+// checks for disarm button input
+void checkdisarm(){
+  // if button pressed
+  if(joystickGetDigital(1, 7, JOY_RIGHT)){
+      disarm();
   }
 }
 

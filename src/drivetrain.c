@@ -7,5 +7,7 @@ void drivetrain(){
   int left = joystickGetAnalog(1, 3); // vertical axis on left joystick
 
   motorSet(2, left);
+  motorSet(8, left);
+  motorSet(9, -right);
   motorSet(3, -right);
 }

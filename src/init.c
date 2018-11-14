@@ -32,10 +32,12 @@ void initializeIO() {
   pinMode(4, INPUT_ANALOG);
 
   // launcher limit switch
-  pinMode(1, INPUT);
-  // disarm / diagnostics bumper 
-  pinMode(2, INPUT);
+  pinMode(LIMIT_SWITCH, INPUT);
 
+  // auto limit switches
+  pinMode(AUTO_BIT_ONE, INPUT);
+  pinMode(AUTO_BIT_TWO, INPUT);
+  pinMode(AUTO_BIT_THREE, INPUT);
 }
 
 /*
@@ -51,11 +53,42 @@ void initializeIO() {
  * will not start. An autonomous mode selection menu like the pre_auton() in other environments
  * can be implemented in this task if desired.
  */
+
+ int initializeAutoMode() {
+   int x = 0;
+   if (digitalRead(AUTO_BIT_ONE) == LOW) {
+     x = x | 1; //0001
+   }
+
+   if (digitalRead(AUTO_BIT_TWO) == LOW) {
+     x = x | 2; //0010
+   }
+
+   if (digitalRead(AUTO_BIT_THREE) == LOW) {
+     x = x | 4; //0100
+   }
+
+   return x - 4;
+ }
+
 void initialize() {
   // initialize lcds
   lcdInit(uart1);
+  lcdClear(uart1);
+
+  const char *a[3];
+  a[0] = "Back Right";
+  a[1] = "Back Left";
+  a[2] = "Front Right";
+  a[3] = "Front Left";
+
+  lcdPrint(uart1, 1, a[initializeAutoMode()]);
+  print(a[initializeAutoMode()]);
+
   // ultrasonic in, out
   sonar = ultrasonicInit(3, 2);
   // initialize encoders
   imeInitializeAll();
+  imeReset(0);
+  imeReset(1);
 }

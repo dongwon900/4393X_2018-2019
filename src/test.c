@@ -7,81 +7,36 @@
 
 void test(){
   // arm readings
-  printf("Arm: %d \n", analogRead(1));
+  print("Arm: ");
+  print((const char*) analogRead(1));
+  print("\n");
   // claw readings
-  printf("Claw: %d \n", analogRead(2));
+  print("Claw: ");
+  print((const char*) analogRead(2));
+  print("\n");
 
   // left and right line tracker readings
-  printf("Left Line Tracker: %d \n", analogRead(3));
-  printf("Right Line Tracker: %d \n", analogRead(4));
-
+  print("left linetracker: ");
+  print((const char*) analogRead(3));
+  print("\n");
+  print("right linetracker: ");
+  print((const char*) analogRead(4));
+  print("\n");
 
   // left and right encoder readings
   imeGet(0,ime_0);
   imeGet(0,ime_1);
-  printf("left encoder count: %d, right encoder count: %d \n", *ime_0, *ime_1);
 
-  printf("distance: %d\n", ultrasonicGet(sonar));
+  print("left encoder: ");
+  print((const char*) *ime_0);
+  print("\n");
+  print("right encoder: ");
+  print((const char*) *ime_1);
+  print("\n");
+
+  print("distance from wall: ");
+  print((const char*) ultrasonicGet(sonar));
+  print("\n");
 
   delay(250);
-  // // arm readings
-  // printf("Arm: %d \n", analogRead(1));
-  // // claw readings
-  // printf("Claw: %d \n", analogRead(2));
-  //
-  // // left and right line tracker readings
-  // printf("Left Line Tracker: %d \n", analogRead(3));
-  // printf("Right Line Tracker: %d \n", analogRead(4));
-  //
-  // // left and right encoder readings
-  // imeGet(0,ime_0);
-  // imeGet(0,ime_1);
-  // printf("left encoder count: %d, right encoder count: %d \n", *ime_0, *ime_1);
-  //
-  // delay(750);
-  // system("clear");
 };
-
-
-
-// void inDiagnostics(){
-//   // 2-state FSM
-//   if(lcdReadButtons(uart1) == 2){
-//     if(inDiagnostics_state == false){
-//       inDiagnostics_state = true;
-//     }
-//     else{
-//       inDiagnostics_state = false;
-//     }
-//   }
-// }
-
-// // function that outputs diagnostics information onto the lcd
-// void test(){
-//   // read button
-//   // LCD_BTN_LEFT 1
-//   // LCD_BTN_CENTER 2
-//   // LCD_BTN_RIGHT 4
-//
-//   // change menu states according to button presses
-//   // "circular" FSM
-//
-//
-//
-//   // menu 0
-//   if(menu_state == 0){
-//     // display encoder stats
-//
-//   }
-//   // menu 1
-//   else if(menu_state == 1){
-//     // display potentiometer stats
-//
-//   }
-//   // output the diagnostics
-//   else if(menu_state == 1){
-//     // display memes
-//
-//   }
-//
-// }

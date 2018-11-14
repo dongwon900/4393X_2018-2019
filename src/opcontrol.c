@@ -5,18 +5,43 @@
 #include "plant_system.h"
 #include "test.h"
 
-// the operatorControl
+void autonomous_test(){
+  motorSet(6, 127);
+  delay(1000);
 
+	motorSet(6,0);
+}
+
+// the operatorControl
 void operatorControl() {
 	while (1) {
-		if(is_diagnostics == false){
+		// checks for disarm input
+		checkdisarm();
+
+		// if not in disarmed mode
+		if(disarmed == false){
+			if (joystickGetDigital(1, 7, JOY_LEFT)) {
+				if(joystickGetDigital(1, 8, JOY_RIGHT)) {
+					autonomous_test();
+				}
+			}
+
+			if (joystickGetDigital(1, 7, JOY_LEFT)) {
+				if(joystickGetDigital(1, 8, JOY_LEFT)) {
+					adjustDistance(12);
+				}
+			}
+
 			drivetrain();
 			shooting_system(127,127);
 			claw_system(127,127);
-		}
-		else{
+			lifter();
 			test();
+
 		}
+
+		// if in disarmed mode
+
 
 		//test();
 		// // checks if the middle button is pressed
