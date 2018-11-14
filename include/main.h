@@ -40,13 +40,6 @@
 extern "C" {
 #endif
 
-<<<<<<< HEAD
-// global variables
-
-bool is_diagnostics;
-// ultrasonic sensor
-=======
->>>>>>> 74761dcf8525f5bd08e658ad435ca2c1db5a4155
 Ultrasonic sonar;
 
 // A function prototype looks exactly like its declaration, but with a semicolon instead of

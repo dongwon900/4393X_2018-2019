@@ -18,7 +18,6 @@ void arm(bool up, bool down, int speed) {
 void claw_system(int clawspeed, int armspeed){
   claw(joystickGetDigital(1, 5, JOY_UP), joystickGetDigital(1, 5, JOY_DOWN), clawspeed);
   arm(joystickGetDigital(1, 6, JOY_UP), joystickGetDigital(1, 6, JOY_DOWN), armspeed);
-<<<<<<< HEAD
 }
 
 void adjustDistance(int requiredDistance){
@@ -40,16 +39,11 @@ void adjustDistance(int requiredDistance){
     motorSet(3, -80);
     motorSet(8, -80);
     motorSet(9, -80); //drives robot bakward
-    delay(20);
+    delay(10);
     distanceFromWall = ultrasonicGet(sonar);
   }
 }
 
-=======
-}
-
-
->>>>>>> 74761dcf8525f5bd08e658ad435ca2c1db5a4155
 // int arm_level = 0;
 // double arm_pot_values[3] = {2000, 2500, 3000}; // insert pot val 1, 2, 3
 //
