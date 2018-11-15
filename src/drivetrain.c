@@ -20,7 +20,12 @@ void driveDistance(int distance){
   imeGet(1, rightDriveCount); //one rotation of the shaft is equal to 627.2 ccount
 
   double wheelDiameter = 4 * 2.54; //omni diameter is 4 inhes and convert to centimeters
+  double wheelCircumference = wheelDiameter * 3.1415;
 
-  //double distaneTravelledLeft =  leftDriveCount / wheelDiameter;
-  //double distanceTravelledRight =  rightDriveCount / wheelDiameter;
+  double* lDrive = (double*) leftDriveCount;
+  double* rDrive = (double*) rightDriveCount; //casts the ints to double*
+
+  //double* distaneTravelledLeft =  lDrive / wheelCircumference;
+  //double* distanceTravelledRight =  rDrive / wheelCircumference; //wtf how why no work
+
 }
