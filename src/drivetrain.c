@@ -11,3 +11,16 @@ void drivetrain(){
   motorSet(9, -right);
   motorSet(3, -right);
 }
+
+void driveDistance(int distance){
+  int* leftDriveCount = 0;
+  int* rightDriveCount = 0;
+
+  imeGet(0, leftDriveCount);
+  imeGet(1, rightDriveCount); //one rotation of the shaft is equal to 627.2 ccount
+
+  double wheelDiameter = 4 * 2.54; //omni diameter is 4 inhes and convert to centimeters
+
+  //double distaneTravelledLeft =  leftDriveCount / wheelDiameter;
+  //double distanceTravelledRight =  rightDriveCount / wheelDiameter;
+}

@@ -42,6 +42,10 @@ void adjustDistance(int requiredDistance){
     delay(10);
     distanceFromWall = ultrasonicGet(sonar);
   }
+  motorSet(2, 0);
+  motorSet(3, 0);
+  motorSet(8, 0);
+  motorSet(9, 0); //sets back to stopped
 }
 
 // int arm_level = 0;
