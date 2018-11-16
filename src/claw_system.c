@@ -25,22 +25,26 @@ void adjustDistance(int requiredDistance){
   //int requiredDistane = 12; //arbitrary distance to cover
   int fudgeFactor = 1;
   //bool distanceUpdated = false;
-
+  lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
   while(distanceFromWall > requiredDistance + fudgeFactor){
-    motorSet(2, 80);
-    motorSet(3, 80);
-    motorSet(8, 80);
-    motorSet(9, 80); //drives robot forward
+    motorSet(2, 30);
+    motorSet(3, -30);
+    motorSet(8, 30);
+    motorSet(9, -30); //drives robot forward
     delay(20);
     distanceFromWall = ultrasonicGet(sonar);
+    lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
+    lcdSetText(uart1, 2, "Forward state");
   }
   while(distanceFromWall < requiredDistance - fudgeFactor){
-    motorSet(2, -80);
-    motorSet(3, -80);
-    motorSet(8, -80);
-    motorSet(9, -80); //drives robot bakward
+    motorSet(2, -30);
+    motorSet(3, 30);
+    motorSet(8, -30);
+    motorSet(9, 30); //drives robot bakward
     delay(10);
     distanceFromWall = ultrasonicGet(sonar);
+    lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
+    lcdSetText(uart1, 2, "Reverse state");
   }
   motorSet(2, 0);
   motorSet(3, 0);

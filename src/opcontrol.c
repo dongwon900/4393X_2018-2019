@@ -28,7 +28,7 @@ void operatorControl() {
 
 			if (joystickGetDigital(1, 7, JOY_LEFT)) {
 				if(joystickGetDigital(1, 8, JOY_LEFT)) {
-					adjustDistance(12); //should run the funtion and put the robot 12 centimeters away from the object in front of the ultrasonic
+					adjustDistance(45); //should run the funtion and put the robot 12 centimeters away from the object in front of the ultrasonic
 				}
 			}
 
@@ -36,7 +36,7 @@ void operatorControl() {
 			shooting_system(127,127);
 			claw_system(127,127);
 			lifter();
-			test();
+			//test();
 
 		}
 

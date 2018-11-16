@@ -85,12 +85,12 @@ void initialize() {
   print(a[initializeAutoMode()]);
 
   // ultrasonic in, out
-  sonar = ultrasonicInit(3, 2);
+  sonar = ultrasonicInit(2, 3);
 
   // initialize encoders
   int IMEcount = imeInitializeAll();
   if(IMEcount != 2){ //change number based on IMEs
-    //lcdSetText(1, 1, "IME Error");//makes sure only 2 IMEs are registered
+    lcdSetText(uart1, 1, "IME Error");//makes sure only 2 IMEs are registered
   }
   else{
     for(int i = 0; i < IMEcount; i++){ //reset all encoders regardless of the ammount

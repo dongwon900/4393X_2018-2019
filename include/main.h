@@ -104,6 +104,11 @@ void initialize();
  */
 void operatorControl();
 
+void leftMotors(int speed);
+void rightMotors(int speed);
+void drive(int leftSpeed, int rightSpeed);
+void resetAllIME(int IMECount);
+
 // End C++ export structure
 #ifdef __cplusplus
 }
