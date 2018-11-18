@@ -17,6 +17,12 @@ void drive(int leftSpeed, int rightSpeed)
   rightMotors(rightSpeed);
 }
 
+void timedDrive(int leftSpeed, int rightSpeed, int milliseconds){
+  drive(leftSpeed, rightSpeed);
+  delay(milliseconds);
+  drive(0, 0);
+}
+
 void drivetrain(){
   // handle the drivetrain
   int right = joystickGetAnalog(1, 2); // vertical axis on right joystick
@@ -44,7 +50,20 @@ void updateDistances(double *rightDistance, double *leftDistance, int leftDriveI
   const double wheelCircumference = wheelDiameter * 3.1415;
 
   *leftDistance = leftDriveIME/627.2 * wheelCircumference;
-  *rightDistance = rightDriveIME/627.2 * wheelCircumference;
+  *rightDistance = rightDriveIME/627.2 * wheelCircumference * -1;
+}
+
+bool tickErrorRelevant(int leftDriveCount, int rightDriveCount){
+  int fudgeFactor = 20;
+  if(leftDriveCount > rightDriveCount + fudgeFactor){
+    return true;
+  }
+  else if(leftDriveCount < rightDriveCount - fudgeFactor){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
 
 void driveDistance(int distance){ //distance is in inches
@@ -66,7 +85,7 @@ bool completedMove = false;
 
 while(!completedMove){
 
-  if(distanceTravelledLeft == distanceTravelledRight && distanceTravelledLeft < distance){
+  if(!tickErrorRelevant(leftDriveCount, rightDriveCount) && distanceTravelledLeft < distance){
     while(distanceTravelledLeft < distance && distanceTravelledRight < distance){
       drive(127, 127);
       updateAllIME(&leftDriveCount, &rightDriveCount);
@@ -102,8 +121,8 @@ while(!completedMove){
 
 //SWITCH TO USING A GYRO  TO TURN TO PREVENT MOTOR SLIPPAGE
 void updateDegrees(int leftIMECount, int rightIMECount, double* leftDegrees, double* rightDegrees){
-  *leftDegrees = leftIMECount / 3;
-  *rightDegrees = rightIMECount / 3;
+  *leftDegrees = leftIMECount / 2.3;
+  *rightDegrees = rightIMECount / 2.3 * -1;
 }
 
 void turn(int degrees){ //in order for this to be entirely correct the ratio of
@@ -112,7 +131,7 @@ void turn(int degrees){ //in order for this to be entirely correct the ratio of
   int rightDriveCount = 0;
   imeGet(0, &leftDriveCount);
   imeGet(1, &rightDriveCount);
-  //gonna use the value of 3 ticks on both motors to be one degree of rotation and this gives 270 ticks for a 90 degree turn
+  //gonna use the value of 2.3 ticks on both motors to be one degree of rotation and this gives 270 ticks for a 90 degree turn
   double degreesMovedLeft;
   double degreesMovedRight;
   updateDegrees(leftDriveCount, rightDriveCount, &degreesMovedLeft, &degreesMovedRight);

@@ -107,8 +107,10 @@ void operatorControl();
 void leftMotors(int speed);
 void rightMotors(int speed);
 void drive(int leftSpeed, int rightSpeed);
+void timedDrive(int leftSpeed, int rightSpeed, int milliseconds);
 void resetAllIME(int IMECount);
 void updateAllIME(int *leftValue, int *rightValue); //hardcoded for two IMEs, will need updating if more are added
+void driveDistance(int distance);
 void turn(int degrees);
 
 // End C++ export structure
