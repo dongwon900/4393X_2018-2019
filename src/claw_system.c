@@ -20,36 +20,37 @@ void claw_system(int clawspeed, int armspeed){
   arm(joystickGetDigital(1, 6, JOY_UP), joystickGetDigital(1, 6, JOY_DOWN), armspeed);
 }
 
+void updateSonar(int *distance){
+  int newSonar = ultrasonicGet(sonar);
+  if(newSonar != -1 && newSonar < 150){
+    *distance = newSonar;
+  }
+  else{
+    return;
+  }
+}
+
 void adjustDistance(int requiredDistance){
   int distanceFromWall = ultrasonicGet(sonar); //get the current distance
   //int requiredDistane = 12; //arbitrary distance to cover
   int fudgeFactor = 1;
   //bool distanceUpdated = false;
   lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
-  while(distanceFromWall > requiredDistance + fudgeFactor){
-    motorSet(2, 30);
-    motorSet(3, -30);
-    motorSet(8, 30);
-    motorSet(9, -30); //drives robot forward
-    delay(20);
-    distanceFromWall = ultrasonicGet(sonar);
+  while(distanceFromWall > requiredDistance - fudgeFactor){
+    drive(80, 80); //drives robot forward
+    delay(10);
+    updateSonar(&distanceFromWall);
     lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
     lcdSetText(uart1, 2, "Forward state");
   }
-  while(distanceFromWall < requiredDistance - fudgeFactor){
-    motorSet(2, -30);
-    motorSet(3, 30);
-    motorSet(8, -30);
-    motorSet(9, 30); //drives robot bakward
+  while(distanceFromWall < requiredDistance + fudgeFactor){
+    drive( -80, -80); //drives robot bakward
     delay(10);
-    distanceFromWall = ultrasonicGet(sonar);
+    updateSonar(&distanceFromWall);
     lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
     lcdSetText(uart1, 2, "Reverse state");
   }
-  motorSet(2, 0);
-  motorSet(3, 0);
-  motorSet(8, 0);
-  motorSet(9, 0); //sets back to stopped
+  drive(0, 0); //sets back to stopped
 }
 
 // int arm_level = 0;
