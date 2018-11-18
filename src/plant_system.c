@@ -16,3 +16,13 @@ void lifter(){
     motorSet(4,0);
   }
 }
+
+void lift(int speed){ //positve for up and negative for down
+  motorSet(4, speed);
+}
+
+void timedLift(int speed, int milliseconds){
+  lift(speed);
+  delay(milliseconds);
+  lift(0);
+}

@@ -20,6 +20,26 @@ void claw_system(int clawspeed, int armspeed){
   arm(joystickGetDigital(1, 6, JOY_UP), joystickGetDigital(1, 6, JOY_DOWN), armspeed);
 }
 
+void moveClaw(int speed){ //input positive for up and negative for down
+  motorSet(10, -speed);
+}
+
+void timedMoveClaw(int speed, int milliseconds){
+  moveClaw(speed);
+  delay(milliseconds);
+  moveClaw(0);
+}
+
+void moveArm(int speed){ //input positive for up and negative for down
+  motorSet(7, speed);
+}
+
+void timedMovedArm(int speed, int milliseconds){
+  moveArm(speed);
+  delay(milliseconds);
+  moveArm(0);
+}
+
 void updateSonar(int *distance){
   int newSonar = ultrasonicGet(sonar);
   if(newSonar != -1 && newSonar < 150){
@@ -35,7 +55,7 @@ void adjustDistance(int requiredDistance){
   //int requiredDistane = 12; //arbitrary distance to cover
   int fudgeFactor = 1;
   //bool distanceUpdated = false;
-  lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
+  //lcdPrint(uart1, 1, "Distance: %d", distanceFromWall);
   while(distanceFromWall > requiredDistance - fudgeFactor){
     drive(80, 80); //drives robot forward
     delay(10);

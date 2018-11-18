@@ -112,6 +112,17 @@ void resetAllIME(int IMECount);
 void updateAllIME(int *leftValue, int *rightValue); //hardcoded for two IMEs, will need updating if more are added
 void driveDistance(int distance);
 void turn(int degrees);
+void adjustDistance(int requiredDistance);
+void moveClaw(int speed);
+void timedMoveClaw(int speed, int milliseconds);
+void moveArm(int speed);
+void timedMoveArm(int speed, int milliseconds);
+void lift(int speed);
+void timedLift(int speed, int milliseconds);
+void intake(int speed);
+void toggleIntake();
+void shooter(int speed);
+void shoot();
 
 // End C++ export structure
 #ifdef __cplusplus

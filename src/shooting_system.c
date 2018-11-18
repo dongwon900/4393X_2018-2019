@@ -16,7 +16,48 @@ void balllift(int speed){
 
 }
 
+static bool intakeActive = false;
+
+void intake(int speed){ //postive for normal operation, negative for reverse operation
+  motorSet(5, -speed);
+  if(speed != 0){
+    intakeActive = true;
+  }
+  else if(speed == 0){
+    intakeActive = false;
+  }
+}
+
+void toggleIntake(){
+  if(intakeActive == false){
+    intake(127);
+  }
+  else{
+    intake(0);
+  }
+}
+
+void shooter(int speed){
+  motorSet(6, speed);
+}
+
 static bool isCocked = false;
+
+void shoot(){
+  if(!isCocked){
+    while(!isCocked){
+      shooter(127);
+      if(digitalRead(LIMIT_SWITCH) == LOW){
+        isCocked = false;
+      }
+    }
+  }
+  else{
+    shooter(127);
+    delay(300);
+    shooter(0);
+  }
+}
 
 void launcher(int speed){
   bool launch = joystickGetDigital(1, 8, JOY_RIGHT);
@@ -28,7 +69,7 @@ void launcher(int speed){
   // else, give control back to user for shooting
   else {
     if (isCocked == false) {
-      //lcdSetText(uart1, 1, );
+      lcdSetText(uart1, 1, "Reloading");
       motorSet(6, speed);
       delay(350);
       isCocked = true;

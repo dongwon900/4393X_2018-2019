@@ -74,6 +74,7 @@ void initialize() {
   // initialize lcds
   lcdInit(uart1);
   lcdClear(uart1);
+  lcdSetBacklight(uart1, 1);
 
   const char *a[3];
   a[0] = "Back Right";
