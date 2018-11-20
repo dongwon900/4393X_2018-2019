@@ -114,3 +114,58 @@ void autonomous() {
   //   }
   // }
 }
+
+//Justin's dank boy autonomous in the poor boy field area
+//one high flag, one ground cap, one pole cap, alliance park
+void autonomous1(){ //starting in the further alliance plartform (from flags)
+  /*
+  (face towards the flags)
+  1.fire the launcher /
+  2.lower the claw /
+  3.turn 87 degrees counter clockwise (slightly off due to having to get a good angle to hit the flags) /
+  4. turn intake on
+  5.drive forward roughly 4 feet /
+  6.(turn intake off)
+  7.turn 90 degrees counter clockwise /
+  8. drive forward 2 feet /
+  9. raise claw /
+  10. turn 90 degrees counter clockwise
+  11. lower claw
+  12.drive forward 1.2 feet
+  13.turn 90 degrees clockwise
+  14.drive backwards 1 foot
+  15.raise claw
+  16.raise arm
+  17.drive forward 1.5 feet
+  18.lower arm
+  19.drive backwards 1 foot
+  20.raise claw to stow it
+  21.turn 180 degrees
+  22.drive forward 2 feet (to the platform)
+  23.climb the alliance platform
+  */
+
+  shoot(); //1
+  timedMoveClaw(-127, 400); //2
+  turn(-87); //3
+  toggleIntake(); //4
+  driveDistance(121); //5
+  toggleIntake(); //6
+  turn(-90); //7
+  driveDistance(61); //8
+  timedMoveClaw(127, 600); //9
+  turn(90); //10
+  timedMoveClaw(-127, 400); //1
+  driveDistance(37); //12
+  turn(90); //13
+  driveDistance(-30); //14
+  moveClaw(80); //15
+  moveArm(100); //16
+  driveDistance(46); //17
+  timedMoveArm(-127, 250); //18
+  driveDistance(-30); //19
+  timedMoveClaw(127, 600); //20
+  turn(180); //21
+  driveDistance(61); //22
+  timedDrive(127, 127, 1200); //23
+}
